@@ -1,23 +1,22 @@
-<h1>List of all the reviews for <%= @restaurant.name %></h1>
 <div class="container">
-  <%= link_to "Add a new review", new_restaurant_review_path, class:"btn btn-success", style:"display: block; width: 250px; margin: auto;  margin-bottom: 50px;" %>
-  <div class="row">
+<h1>List of all the reviews for <%= @restaurant.name %></h1>
+  <div class="row margin-top-list">
     <div class="col-xs-12">
       <ul>
         <% @restaurant.reviews.each do |review| %>
-        <li style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-          <div class="">
-            <h3 style="margin-top: 0">
+        <li class="display-list card-shadow banner-card">
+          <div class="margin-left-card ">
+            <h3 class="no-margin-top">
               <%= "*" * review.rating%>
             </h3>
-            <p>
+            <div class="card-review">
               <%= review.content %>
-            </p>
+            </div>
           </div>
-          <div class=""> <!-- description -->
-          <%= link_to "Back to restaurant details", restaurant_path(@restaurant), class:"btn btn-primary" %>
-          <%= link_to "Edit Review", edit_review_path(review), class:"btn btn-warning" %>
-          <%= link_to "Delete Review", review_path(review), method: :delete, data: {confirm: "Are you sure to delete this review"},class:"btn btn-danger" %>
+          <div class="btn-margin-right"> <!-- description -->
+            <%= link_to "Back to restaurant details", restaurant_path(@restaurant), class:"btn btn-primary" %>
+            <%= link_to "Edit Review", edit_review_path(review), class:"btn btn-warning" %>
+            <%= link_to "Delete Review", review_path(review), method: :delete, data: {confirm: "Are you sure to delete this review"},class:"btn btn-danger" %>
           </div> <!-- /description -->
 
         </li>
@@ -25,4 +24,5 @@
       </ul>
     </div>
   </div>
+  <%= link_to "Add a new review", new_restaurant_review_path, class:"btn btn-success mybtnclass" %>
 </div>

@@ -1,11 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edit, :show, :destroy, :update]
+  before_action :set_review, only: [:edit, :destroy, :update]
   before_action :set_restaurant, only: [:index, :create, :new]
 
   def index
-  end
-
-  def show
   end
 
   def new
@@ -23,7 +20,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -39,7 +35,7 @@ class ReviewsController < ApplicationController
   def destroy
     id = @review.restaurant_id
     @review.destroy
-      redirect_to restaurant_path(id)
+    redirect_to restaurant_path(id)
   end
 
   private

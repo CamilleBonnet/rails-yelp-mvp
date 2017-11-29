@@ -1,0 +1,31 @@
+<h1>List of all the restaurants</h1>
+<div class="container">
+  <%= link_to "Add a new restaurant", new_restaurant_path, class:"btn btn-success", style:"display: block; width: 250px; margin: auto;  margin-bottom: 50px;" %>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul>
+        <% @restaurants.each do |resto| %>
+        <li style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+          <div class="">
+            <h3 style="margin-top: 0">
+              <%= link_to resto.name, restaurant_path(resto) %>
+            </h3>
+            <p>
+              <%= resto.address %>
+              <%= resto.phone_number %>
+              <%= resto.category.capitalize %>
+            </p>
+          </div>
+          <div class=""> <!-- description -->
+
+          <%= link_to "See Reviews", restaurant_reviews_path(resto), class:"btn btn-primary" %>
+          <%= link_to "Edit Restaurant", edit_restaurant_path(resto), class:"btn btn-warning" %>
+          <%= link_to "Delete Restaurant", restaurant_path(resto), method: :delete, data: {confirm: "Are you sure to delete #{resto.name}"},class:"btn btn-danger" %>
+          </div> <!-- /description -->
+
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
